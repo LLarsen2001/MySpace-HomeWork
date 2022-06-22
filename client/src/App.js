@@ -6,6 +6,7 @@ import Login from './components/auth/Login';
 import UserAccount from './components/shared/UserAccount';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import FetchUser from './components/auth/FetchUser';
+import './App.css'
 
 function App() {
   return (

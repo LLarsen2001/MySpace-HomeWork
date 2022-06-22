@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class User < ActiveRecord::Base
-  serialize :liked_profiles, Array
+  serialize :followed_profiles, Array
 
   extend Devise::Models
   # Include default devise modules. Others available are:
@@ -9,8 +9,15 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
-  def self.liked_profiles(ids)
+
+  def self.unfollowed_profiles(ids)
     ids = ids.empty? ? [0] : ids 
-    Profile.where("id IN (?)", ids).order("RANDOM")
+    Profile.where("id NOT IN (?)", ids).order("RANDOM()")
   end
+  
+  def self.followed_profiles(ids)
+    ids = ids.empty? ? [0] : ids 
+    Profile.where("id IN (?)", ids).order("RANDOM()")
+  end
+ 
 end

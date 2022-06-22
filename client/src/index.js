@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import AuthProvider from './providers/AuthProvider';
 import { BrowserRouter } from 'react-router-dom';
 import { initMiddleware } from 'devise-axios'
+import './App.css'
 
 initMiddleware();
 
