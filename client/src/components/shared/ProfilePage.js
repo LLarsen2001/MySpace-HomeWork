@@ -1,39 +1,67 @@
+import styled from "styled-components"
 const Card = (props) => {
 
-    return (
-        <div className="card" >
-            <div className="top">
-                <div class="avatar-holder">
-                    <img src={props.avatar} />
-                </div>
-                <div class="name">
-                    <h3>{props.name}</h3>
-                </div>
-                <div class="button">
-                    <button>follow</button>
-                </div>
-            </div>
-            <div class="info">
-                <div class="ds genders">
-                    <h8 title="profile gender">Gender</h8>
-                    <p2>{props.gender}</p2>
-                </div>
-                <div class="ds dob">
-                    <h8 title="DOB">Date Of Birth</h8>
-                    <p2>{props.dob}</p2>
-                </div>
-            </div>
-            <div class="ds-bio">
-                <h6>Bio</h6>
-                <div class="profileBio">
-                    <p>{props.bio}</p>
-                </div>
+  return (
 
-            </div>
+    <CardContainer>
+      <CardHeaderContainer>
+        <div className="avatar-holder">
+          <img src={props.avatar} />
+        </div>
+        <div className="name">
+          <h3>{props.name}</h3>
+        </div>
+        <div className="button" >
+          <button>follow</button>
         </div >
+        <div className="about">
+          <div>
+            <p2><b>gender: </b>{props.gender}</p2>
+          </div>
+          <div>
+            <p2><b>Birthday: </b>{props.dob}</p2>
+          </div>
+        </div>
+      </CardHeaderContainer>
+      <CardBody>
 
-    )
+        <div>
+          <h5>Bio</h5>
+        </div>
+        <CardBioContainer >
+
+          <p>{props.bio}</p>
+        </CardBioContainer>
+
+
+      </CardBody>
+    </CardContainer >
+
+  )
 }
+const CardContainer = styled.div`
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  margin: 20px;
+  padding: 10px 20px;
+`;
+
+const CardHeaderContainer = styled.div`
+    display: inline;
+    justify-content: space-between;
+    padding:10px;
+`;
+
+const CardBody = styled.div`
+    padding:10px;
+`;
+
+const CardBioContainer = styled.div`
+  border: insert;
+  border-style: inset;
+  margin: 20px;
+  padding: 20px;
+`;
 export default Card
 
 
