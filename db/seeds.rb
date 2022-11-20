@@ -1,21 +1,50 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+
+Userjob.destroy_all
+Job.destroy_all
+
 User.destroy_all
-Profile.destroy_all
 
-User.create(email:'test34@test.com', password:'123456')
+status = [
+    'wishlist',
+    'applied',
+    'interview',
+    'offer recieved',
+    'offer accepted',
+    ]
+    10.times do
+     uscr = User.create(
+      email:Faker::Internet.email,
+       password:'123456'
+      )
 
-20.times do
-    name = Faker::Name.name
-    gender = Faker::Gender.type
-    bio = Faker::Quote.matz
-    dob = Faker::Date.birthday(min_age: 18, max_age: 65)
-    avatar = Faker::Avatar.image(slug: "my-own-slug", size: "50x50", format: "bmp", set: "set1", bgset: "bg1")
-    Profile.create(name: name, gender: gender, bio: bio, dob: dob, avatar: avatar)
-end
-puts "#{Profile.all.size}profiles seeded"
+        u = User.create(
+         
+         email:Faker::Internet.email,
+         password:'123456'
+      )
+
+      10.times do
+        j = Job.create(
+            job_name:Faker::Job.title,
+             salary:400000,
+             description:Faker::Job.key_skill,
+             remote:Faker::Boolean.boolean,
+             location:(Faker::Address.city)+ (", ")+( Faker::Address.state_abbr),
+             isfilled:Faker::Boolean.boolean,
+             
+             user_id:uscr.id                 
+            )
+      
+             uj = Userjob.create(
+             status:status.sample,
+             user_id:u.id,
+             job_id:j.id
+            )
+      
+      end
+    end
+      
+    
+      puts "user size:#{User.all.size}"
+      puts "userjobs size:#{Userjob.all.size}"
+      puts "Job size:#{Job.all.size}"
