@@ -75,10 +75,10 @@ class Api::UserjobController < ApplicationController
   def set_userjob 
       @userjob =  @user.userjobs.find(params[:id])
   end
-  
+
   
   def userjob_params 
-      params.require(:userjob).permit(:status, :job_id,)
+      params.require(:userjob).permit(:status, :job_id)
   end
 
 

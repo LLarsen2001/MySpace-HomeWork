@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   namespace :api do
     delete '/users/:id', to: 'users#destroy'
     put '/users/:id', to: 'users#update'
-    get '/users/:user_id/data', to: 'userjobs#boarddata'
+    get '/users/:user_id/data', to: 'userjob#boarddata'
     get '/users/:user_id/userjobs/:id', to: 'userjob#show'
     post '/users/:user_id/userjobs', to: 'userjob#create'
     get '/users/:user_id/userjobs', to: 'userjob#index'
