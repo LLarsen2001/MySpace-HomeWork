@@ -8,6 +8,10 @@ class Api::JobsController < ApplicationController
     render json: Job.availableJobs
   end
 
+  def posted
+    render json: Job.postedJobs(params[:user_id])
+  end
+
   def all
     render json: Job.all
   end

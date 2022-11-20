@@ -13,6 +13,7 @@ status = [
     ]
     10.times do
      uscr = User.create(
+      name:Faker::Name.name,
       email:Faker::Internet.email,
        password:'123456'
       )
@@ -25,13 +26,13 @@ status = [
 
       10.times do
         j = Job.create(
-            job_name:Faker::Job.title,
+             job_name:Faker::Job.title,
+             company:Faker::Company.name, 
              salary:400000,
-             description:Faker::Job.key_skill,
+             description:Faker::Job.position,
              remote:Faker::Boolean.boolean,
              location:(Faker::Address.city)+ (", ")+( Faker::Address.state_abbr),
              isfilled:Faker::Boolean.boolean,
-             
              user_id:uscr.id                 
             )
       
